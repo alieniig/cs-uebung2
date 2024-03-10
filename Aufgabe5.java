@@ -3,6 +3,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.URI;
 import java.net.URL;
 
 public class Aufgabe5 {
@@ -14,7 +15,8 @@ public class Aufgabe5 {
     }
 
     public static void get(String urlString) throws Exception {
-        URL url = new URL(urlString);
+       
+        URL url = URI.create(urlString).toURL();
         String host = url.getHost();
         String path = url.getPath().isEmpty() ? "/" : url.getPath();
 
