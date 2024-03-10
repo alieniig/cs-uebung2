@@ -8,7 +8,7 @@ import java.net.URL;
 public class Aufgabe5 {
 
     public static void main(String[] args) throws Exception {
-        //get("http://www.google.de/index.html");
+        get("http://www.google.de/index.html");
         get("https://www.tagesschau.de/index.html");
     }
 
