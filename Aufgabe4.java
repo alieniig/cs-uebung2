@@ -1,25 +1,27 @@
 import org.apache.commons.net.ntp.NTPUDPClient;
+import org.apache.commons.net.ntp.NtpV3Packet;
 import org.apache.commons.net.ntp.TimeInfo;
 import java.net.InetAddress;
 import java.util.List;
 
-public class NTPClientExample {
+public class Aufgabe4 {
     public static void main(String[] args) {
         NTPUDPClient client = new NTPUDPClient();
         client.setDefaultTimeout(1000);
 
         String[] timeServers = {
-                "ntp1.example.com",
-                "ntp2.example.com",
-                "ntp3.example.com",
-                "ntp4.example.com",
-                "ntp5.example.com"
+            "time.google.com",
+            "time.nist.gov",
+            "time.apple.com",
+            "time.fu-berlin.de",
+            "time.windows.com"
         };
 
         try {
             for (String server : timeServers) {
                 InetAddress address = InetAddress.getByName(server);
                 TimeInfo timeInfo = client.getTime(address);
+                System.out.println(server);
                 processTimeInfo(timeInfo);
             }
         } catch (Exception e) {
@@ -41,9 +43,9 @@ public class NTPClientExample {
         int mode = ntpPacket.getMode();
         int poll = ntpPacket.getPoll();
         int precision = ntpPacket.getPrecision();
-        long delay = timeInfo.getDelay();
-        double dispersion = timeInfo.getDispersion();
-
+        int delay = ntpPacket.getRootDelay(); 
+        double dispersion = ntpPacket.getRootDispersionInMillis();
+    
         System.out.println("stratum: " + stratum);
         System.out.println("version: " + version);
         System.out.println("mode: " + mode);
@@ -51,6 +53,6 @@ public class NTPClientExample {
         System.out.println("precision: " + precision);
         System.out.println("delay: " + delay);
         System.out.println("dispersion(ms): " + dispersion);
-        System.out.println();
+        System.out.println("----------------");
     }
 }
