@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Uebung3 {
+public class Aufgabe3 {
     public static void main(String[] args) {
           Scanner scanner = new Scanner(System.in);
 
