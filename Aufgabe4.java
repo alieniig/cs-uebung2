@@ -2,12 +2,12 @@ import org.apache.commons.net.ntp.NTPUDPClient;
 import org.apache.commons.net.ntp.NtpV3Packet;
 import org.apache.commons.net.ntp.TimeInfo;
 import java.net.InetAddress;
-import java.util.List;
+
 
 public class Aufgabe4 {
     public static void main(String[] args) {
         NTPUDPClient client = new NTPUDPClient();
-        client.setDefaultTimeout(1000);
+        
 
         String[] timeServers = {
             "time.google.com",
