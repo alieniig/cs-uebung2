@@ -9,6 +9,7 @@ public class Aufgabe5 {
 
     public static void main(String[] args) throws Exception {
         get("http://www.google.de/index.html");
+        System.out.println("---------------------------------------------------");
         get("https://www.tagesschau.de/index.html");
     }
 
