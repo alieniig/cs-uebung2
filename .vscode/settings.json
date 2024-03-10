@@ -1,6 +1,7 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "/Users/Andre/Desktop/commons-net-3.10.0/commons-net-3.10.0.jar"
+        "/Users/Andre/Desktop/commons-net-3.10.0/commons-net-3.10.0.jar",
+        "c:\\Users\\dario\\Downloads\\apache-commons-net.jar"
     ]
 }
