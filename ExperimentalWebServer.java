@@ -10,17 +10,17 @@ import java.net.*;
  * Seitenanforderungen lokal zu dem Verzeichnis,
  * aus dem er gestartet wurde, zu bearbeiten. Wurde
  * der Server z.B. im Verzeichnis c:\tmp gestartet, so
- * würde eine Seitenanforderung
+ * wï¿½rde eine Seitenanforderung
  * http://localhost:80/test/index.html die Datei
  * c:\tmp\test\index.html laden. CGIs, SSIs, Servlets
- * oder ähnliches wird nicht unterstützt.
+ * oder ï¿½hnliches wird nicht unterstï¿½tzt.
  * <p>
  * Die Dateitypen .htm, .html, .gif, .jpg und .jpeg werden
- * erkannt und mit korrekten MIME-Headern übertragen, alle
+ * erkannt und mit korrekten MIME-Headern ï¿½bertragen, alle
  * anderen Dateien werden als "application/octet-stream"
- * übertragen. Jeder Request wird durch einen eigenen
- * Client-Thread bearbeitet, nach Übertragung der Antwort
- * schließt der Server den Socket. Antworten werden mit
+ * ï¿½bertragen. Jeder Request wird durch einen eigenen
+ * Client-Thread bearbeitet, nach ï¿½bertragung der Antwort
+ * schlieï¿½t der Server den Socket. Antworten werden mit
  * HTTP/1.0-Header gesendet.
  */
 public class ExperimentalWebServer
@@ -50,7 +50,7 @@ public class ExperimentalWebServer
 }
 
 /**
- * Die Thread-Klasse für die Client-Verbindung.
+ * Die Thread-Klasse fï¿½r die Client-Verbindung.
  */
 class BrowserClientThread
 extends Thread
@@ -84,7 +84,7 @@ extends Thread
   }
 
   /**
-   * Hauptschleife für den Thread.
+   * Hauptschleife fï¿½r den Thread.
    */
   public void run()
   {
@@ -103,7 +103,7 @@ extends Thread
   }
 
   /**
-   * Liest den nächsten HTTP-Request vom Browser ein.
+   * Liest den nï¿½chsten HTTP-Request vom Browser ein.
    */
   private void readRequest()
   throws IOException
