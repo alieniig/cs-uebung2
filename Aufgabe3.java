@@ -7,13 +7,13 @@ import java.util.Scanner;
 public class Aufgabe3 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Hostname:");
+        String domainName = scanner.nextLine();
         if(scanner.nextLine()=="quit"){
             scanner.close();
         }
 
-        System.out.println("Hostname:");
-        String domainName = scanner.nextLine();
-  
         try {
             // Verbindung aufbauen
             Socket socket = new Socket(domainName, 13);
