@@ -1,32 +1,50 @@
 import java.net.InetAddress;
-import java.net.*;
+import java.net.UnknownHostException;
 import java.util.Scanner;
 
 public class Aufgabe2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter a domain name:");
-        String domainName = scanner.nextLine();
+        while (true) {
+            System.out.println("Enter a domain name or an IP address (or 'Ende' to quit):");
+            String input = scanner.nextLine();
 
-        try {
-            InetAddress address = InetAddress.getByName(domainName);
-            System.out.println("IP Address: " + address.getHostAddress());
-        } catch (UnknownHostException e) {
-            System.out.println("Unknown host");
-        }
+            if (input.equalsIgnoreCase("Ende")) {
+                break;
+            }
 
-        System.out.println("Enter an IP address:");
-        String ipAddress = scanner.nextLine();
-
-        try {
-            InetAddress address = InetAddress.getByName(ipAddress);
-            System.out.println("Domain Name: " + address.getHostName());
-        } catch (UnknownHostException e) {
-            System.out.println("Unknown host");
+            try {
+                InetAddress address = InetAddress.getByName(input);
+                if (isIpAddress(input)) {
+                    System.out.println("Domain Name: " + address.getHostName());
+                } else {
+                    System.out.println("IP Address: " + address.getHostAddress());
+                }
+            } catch (UnknownHostException e) {
+                System.out.println("Unknown host");
+            }
         }
 
         scanner.close();
     }
-}
 
+    private static boolean isIpAddress(String input) {
+        String[] parts = input.split("\\.");
+        if (parts.length != 4) {
+            return false;
+        }
+        for (String part : parts) {
+            int value;
+            try {
+                value = Integer.parseInt(part);
+            } catch (NumberFormatException e) {
+                return false;
+            }
+            if (value < 0 || value > 255) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
