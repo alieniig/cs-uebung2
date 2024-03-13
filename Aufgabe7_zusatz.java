@@ -32,7 +32,12 @@ public class Aufgabe7_zusatz {
 
             String line;
             while ((line = in.readLine()) != null) {
-                // Handle client input here
+                System.out.println("Received: " + line);
+                        out.println("Echo: " + line);
+                        out.flush();
+                        if (line.trim().equals("BYE")) {
+                            break;
+                        }
             }
 
             System.out.println("Client disconnected");
