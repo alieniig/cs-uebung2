@@ -18,7 +18,13 @@ public class Aufgabe3 {
             // Daten lesen
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String response = reader.readLine();
-            System.out.println("Received response: " + response);        
+            String response1 = reader.readLine();
+            String response2 = reader.readLine();
+            String response3 = reader.readLine();
+            System.out.println("Received response: " + response);
+            System.out.println(response1);        
+            System.out.println(response2);
+            System.out.println(response3);
 
             // Verbindung abbauen
             socket.close();
