@@ -18,8 +18,10 @@ public class Aufgabe7 {
                 try (Socket clientSocket = serverSocket.accept();
                      BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                      PrintWriter out = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream()))) {
-
+                        
                     System.out.println("Client connected");
+                    out.println("Welcome to the echo server");
+                    out.flush();
 
                     String line;
                     while ((line = in.readLine()) != null) {
