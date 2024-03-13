@@ -4,8 +4,11 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Aufgabe7_zusatz {
+
+    private static CopyOnWriteArrayList<PrintWriter> clientOutputs = new CopyOnWriteArrayList<>();
 
     public static void main(String[] args) throws Exception {
         start(1234);
@@ -24,22 +27,25 @@ public class Aufgabe7_zusatz {
 
     private static void handleClient(Socket clientSocket) {
         try (BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-             PrintWriter out = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream()))) {
+             PrintWriter out = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream()), true)) {
+
+            clientOutputs.add(out);
 
             System.out.println("Client connected");
             out.println("Welcome to the echo server");
-            out.flush();
 
             String line;
             while ((line = in.readLine()) != null) {
                 System.out.println("Received: " + line);
-                        out.println("Echo: " + line);
-                        out.flush();
-                        if (line.trim().equals("BYE")) {
-                            break;
-                        }
+                for (PrintWriter writer : clientOutputs) {
+                    writer.println("Echo: " + line);
+                }
+                if (line.trim().equals("BYE")) {
+                    break;
+                }
             }
 
+            clientOutputs.remove(out);
             System.out.println("Client disconnected");
         } catch (Exception e) {
             e.printStackTrace();
